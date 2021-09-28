@@ -1,0 +1,231 @@
+html
+{
+    margin: 0;
+    padding: 0;
+    background-color: antiquewhite;
+}
+
+body
+{
+    margin: 0;
+    padding: 0;
+}
+
+.symbol
+{
+   margin: 0.5rem;
+   width: 7rem;
+   height: 7rem;
+}
+
+#header h1
+{
+    margin: auto;
+    text-align: center;
+}
+
+#header
+{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height: 7rem;
+}
+
+.nav li a
+{
+    text-decoration: none;
+    color: darkslategrey;
+    text-align: center;
+}
+
+.nav li a:hover
+{
+    color: rgb(17, 15, 15);
+}
+
+.nav li
+{
+    padding-left: 1rem;
+}
+
+.nav
+{
+    list-style: none;
+    padding-top: 0;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: row;
+}
+
+#form-flex
+{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 1rem;
+    margin-top: -1rem;
+}
+
+.main
+{
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-areas:
+    "side main";
+    background-color: darkseagreen;
+    margin-top: 2rem;
+}
+
+.blog
+{
+    grid-area: main;
+    width: 60ch;
+    padding-left: 5rem;
+}
+
+.blog h2
+{
+    padding: 1rem 0 0 0;
+    margin: 0;
+    color: rgb(17, 15, 15);
+}
+
+.blog p
+{
+    padding: 0.5rem 0;
+    margin: 0;
+    font-size: 1.3rem;
+    color: rgb(17, 15, 15);
+}
+
+.blog a
+{
+    padding: 0;
+    margin: 0;
+}
+
+.blog h1
+{
+    padding: 0;
+    margin: 1rem 0 0 0;
+    color: rgb(17, 15, 15);
+}
+
+#blog-sep
+{
+    background-color: darkred;
+    height: 0.1rem;
+}
+
+article
+{
+    padding: 1rem;
+    background-color: gainsboro;
+    border-radius: 1rem;
+    border: 0.1rem solid rgb(17, 15, 15);
+    margin: 1rem 0;
+}
+
+article a
+{
+    text-decoration: none;
+    color: rgb(17, 15, 15);
+}
+
+#date
+{
+    font-size: 1rem;
+}
+
+.side
+{
+    grid-area: side;
+    font-size: 1.5rem;
+}
+
+.side li
+{
+    margin: 1rem;
+    list-style: none;
+}
+
+.side-sep
+{
+    background-color: darkslategray;
+    height: 0.1rem;
+}
+
+.side-item a
+{
+    display: block;
+}
+
+.side-item a:hover + .sub-side, .sub-side:hover
+{
+    display: flex;
+}
+
+.sub-side
+{
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    background-color: bisque;
+    margin-left: 6rem;
+    margin-top: -3.4rem;
+    width: 11.1rem;
+    padding-right: 0.5rem;
+    font-size: 1rem;
+    z-index: 2;
+}
+
+.sub-side li
+{
+    margin: 0.6rem 0 0 0.6rem;
+    padding-bottom: 0.5rem;
+}
+
+.sub-side a
+{
+    text-decoration: none;
+    color: rgb(17, 15, 15);
+}
+
+.main-side
+{
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: lavender;
+    border: 0.2rem solid rgb(17, 15, 15);
+}
+
+.main-side h2
+{
+    margin: 0;
+}
+
+.footer-nav
+{
+    list-style: none;
+    display: flex;
+    font-size: 1.5rem;
+    justify-content: flex-end;
+    align-content: flex-end;
+    background-color: antiquewhite;
+    flex-direction: row;
+    padding: 1rem;
+    position: static;
+    bottom: 0;
+}
+
+.footer-nav a
+{
+    text-decoration: none;
+    padding: 0.5rem;
+    color: darkslategray;
+}
