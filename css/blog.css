@@ -237,7 +237,7 @@ article a
 
     .blog
     {
-        width: 30ch;
+        width: 28ch;
         padding-left: 8%;
     }
 
@@ -372,12 +372,12 @@ article a
 
     .side
     {
-        font-size: 0.9rem;
+        font-size: 0.7rem;
     }
 
     .side h2
     {
-        font-size: 0.8rem;
+        font-size: 0.7rem;
     }
 
     .side li
