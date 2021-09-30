@@ -166,6 +166,8 @@ body
     grid-template-areas:
     "side main";
     background-color: darkseagreen;
+    position: relative;
+    width: 100%;
 }
 
 .blog
@@ -294,11 +296,27 @@ article a
     }
 }
 
+@media (min-width: 2000px)
+{
+
+    .main
+    {
+        grid-template-columns: 10% 90%;
+    }
+
+    .blog
+    {
+        width: 75ch;
+    }
+}
+
 /*Side category css*/
 .side
 {
     grid-area: side;
     font-size: 1.5rem;
+    position: relative;
+    width: 100%;
 }
 
 .side li
