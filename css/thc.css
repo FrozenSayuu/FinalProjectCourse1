@@ -290,6 +290,54 @@ p
     width: 50%;
     padding-top: 2%;
 }
+
+/*Pop-up*/
+
+.dialog
+{
+    display: none;
+}
+
+.dialog.opened
+{
+    display: block;
+}
+
+.dialog__window
+{
+    display: inline-block;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border: 2px solid black;
+    padding: 18px;
+    margin: auto;
+    text-align: center;
+    z-index: 101;
+}
+
+.dialog__mask
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: #000;
+    opacity: 0.6;
+    overflow: hidden;
+    z-index: 100;
+}
+
+.dialog__img .popupimg
+{
+    margin: auto;
+    padding: 0;
+    width: 50%;
+}
+
 @media (min-width: 350px){
     .pic-content{
         grid-template-columns: 1fr;
