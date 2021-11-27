@@ -291,6 +291,11 @@ p
     padding-top: 2%;
 }
 
+.gal
+{
+    padding-left: 40px;
+}
+
 /*Pop-up*/
 
 .dialog
@@ -343,7 +348,7 @@ p
         grid-template-columns: 1fr;
         grid-template-rows: repeat(8, 1fr);
     }
-    .pic-content img{
+    .gal .galimg{
         height: 8rem;
     }
     #pc-img{
@@ -351,7 +356,7 @@ p
     }
 }
 @media (min-width: 400px){
-    .pic-content img{
+    .gal .galimg{
         height: 10rem;
     }
     #pc-img{
@@ -363,7 +368,7 @@ p
         grid-template-columns: 1fr 1fr;
         grid-template-rows: repeat(4, 1fr);
     }
-    .pic-content img{
+    .gal .galimg{
         height: 20rem;
     }
     #pc-img{
@@ -372,7 +377,7 @@ p
     }
 }
 @media (min-width: 1024px){
-    .pic-content img{
+    .gal .galimg{
         height: 40rem;
         width: 95%;
     }
