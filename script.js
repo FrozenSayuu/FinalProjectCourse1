@@ -30,7 +30,7 @@ fetch("./../images.json")
 
     imageData.forEach((image) =>
     {
-        div.innerHTML += `<div> <h2>${image.title}</h2> <img class=${image.class} id=${image.id} src="`+ image.url +`"/> <p>${image.description}</p> </div>`;
+        div.innerHTML += `<div class="gal"> <h2>${image.title}</h2> <img class=${image.class} id=${image.id} src="`+ image.url +`"/> <p>${image.description}</p> </div>`;
     });
 
     let galimg = document.querySelectorAll('.galimg');
