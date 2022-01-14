@@ -1,3 +1,56 @@
+<?php
+session_start();
+
+error_reporting(-1);              // Report all type of errors
+ini_set("display_errors", 1);
+
+$db = new PDO("sqlite:thehiddencorner.db");
+$stmt = $db -> prepare("SELECT * FROM login");        //Tabellen för login uppgifterna
+$stmt -> execute();
+
+$stmtBlog = $db -> prepare('SELECT * FROM blog_posts');        //Tabellen där bloggen är lagrade
+$stmtBlog -> execute();
+
+if(!empty($_POST['username']) && !empty($_POST['password'])) //Login-funktion
+{
+    $username = htmlspecialchars($_POST['username']);
+    $password = htmlspecialchars($_POST['password']);
+}
+while($verify = $stmt -> fetch())
+{
+    if($username == $verify['username'] && $password == $verify['password'])
+    {
+
+        $_SESSION['validLogin'] = true;
+        $_SESSION['loggedIn'] = $verify['username'];
+        $_SESSION['loggedinId'] = $verify['user_id'];
+        break;
+    }
+    else 
+    {
+        $_SESSION['validLogin'] = false;
+        $_SESSION['loggedIn'] = null;
+        $_SESSION['loggedinId'] = null;
+    }
+}
+
+if(!empty($_POST['logout'])) //Stoppa session(Logga ut)
+    {
+        session_unset();
+        session_destroy();
+    }
+
+if(!empty($_SESSION['loggedIn'])) //Login session-variabel
+    {
+        $validLogin = htmlspecialchars($_SESSION['validLogin']);
+    }
+    else
+    {
+        $validLogin = false;
+    }
+
+?>
+
 <!DOCTYPE html>
 
 <html lang="eng">
@@ -6,33 +59,27 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/blog.css">
         <link rel="icon" href="../img/symbol.png" type="image" sizes="20x20">
-        <title>Blog</title>
+        <title>The Hidden Corner</title>
     </head>
 
     <body>
         <div id="header">
-            <a class="a-s" href="../index.html"><img class="symbol" src="../img/symbol.png" width="2000" height="2000" alt="pentagram" ></a>
+            <a class="a-s" href="../index.php"><img class="symbol" src="../img/symbol.png" width="2000" height="2000" alt="pentagram" ></a>
             <h1>Welcome to our Blog!</h1>
             <nav class="nav">
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="blog.php">Blog</a></li>
+                <li><a href="gallery.php">Gallery</a></li>
+                <li><a href="about.php">About</a></li>
+                <li><a href="contact.php">Contact</a></li>
             </nav>
         </div>
 
         
-       <!-- <div id="form-flex">Senare med php
-            <form action="../html/blog.html" method="post">
-                <div>
-                    <label></label> <input type="email" name="username" placeholder="Username" required>
-                </div>
-                <div>
-                    <label></label> <input type="password" name="password" placeholder="Password" required>
-                    <input type="submit" value="Log in">
-                </div>
+       <div id="form-flex">
+            <form action="../html/login.html" method="post" id="knapp">
+               <input type="submit" name="login" value="Log in">
             </form>
-        </div> -->
+        </div>
         
         <div class="main">
             <div class="blog">
@@ -49,131 +96,23 @@
                 <h2>Recent blog posts</h2>
                 <div id="blog-sep"></div>
 
-                <article>
-                    <a href="https://www.facebook.com/reikipamidgard">
-                    <h2>Interested in Reiki? Speaks swedish? Look here!</h2>
-                    <p>This is a website my dear mother has created and are for you who want to get reiki!</p>
-                    <p>There is also information if you want to read about reiki and what it does to our bodies and spirits.</p>
-                    <p>You can easily find her contacts to get in touch with her and also follow on instagram for even more information!</p>
-                    </a>
-                </article>
+                <?php
 
-                <article>
-                    <a href="https://blog.mindvalley.com/chakra-healing/">
-                    <h2>How to heal your Chakras</h2>
-                    <p id="date">Published December 20, 2017</p>
-                    <p>Have you noticed your body feeling a little off?</p>
-                    <p>Maybe your sleep is getting worse?</p>
-                    </a>
-                </article>
+                    while($blog = $stmtBlog -> fetch())
+                    {
+                        echo <<<TABLEROW
+                            <article>
+                                <a href="{$blog['link']}">
+                                <h2>{$blog['title']}</h2>
+                                <p id="date">Published {$blog['dates']}</p>
+                                <p>{$blog['blog']}</p>
+                                </a>
+                            </article>
+                    TABLEROW;
 
-                <article>
-                    <a href="https://www.hellostudent.co.uk/2019/04/a-beginners-guide-to-crystals/">
-                    <h2>Best beginner crystals!</h2>
-                    <p>Interested in crystals or already have some but don't know what they are or how to use them?</p>
-                    <p>Here is a list and guide over good and safe crystals for you to use!</p>
-                    </a>
-                </article>
+                    }
 
-                <article>
-                    <a href="https://www.mindbodygreen.com/0-13433/warning-signs-your-chakras-are-out-of-balance.html">
-                    <h2>10 Signs your Chakras are unbalanced</h2>
-                    <p id="date">Published Feb 21, 2020</p>
-                    <p>Here's a list of signs if your chakras are unbalanced!</p>
-                    <p>Tips how to put them back in balance and how to maintaine them.</p>
-                    </a>
-                </article>
-
-                <article>
-                    <a href="https://www.dazeddigital.com/beauty/witch-week/article/46538/1/herbology-guide-tracey-ryan-nature-witchcraft-magick-ireland">
-                    <h2>Herbology for the Green witch</h2>
-                    <p id="date">Published 29.10.2019</p>
-                    <p>A lexicon over all herbs with their uses and magical properties!</p>
-                    <p>Tips for homemade teas, cooking recipies and baking.</p>
-                    </a>
-                </article>
-
-                <article>
-                    <a href="https://www.pagangrimoire.com/wheel-of-the-year/">
-                    <h2>The year according to the Pagans</h2>
-                    <p id="date">Published April 18, 2020</p>
-                    <p>Full description for all holidays.</p>
-                    <p>How to celebrate them, decorate your altar and offerings!</p>
-                    </a>
-                </article>
-
-                <article>
-                    <a href="https://www.parachutehome.com/blog/four-crystals-for-home">
-                    <h2>Where to place crystals and their benefits</h2>
-                    <p>Simple guide for each room and the suited crystals.</p>
-                    <p>Match your crystals to what you energies you want for your home, bedroom or workplace</p>
-                    </a>
-                </article>
-
-                <article>
-                    <a href="https://www.mindbodygreen.com/articles/what-is-shadow-work">
-                    <h2>Ready for Shadow Work?</h2>
-                    <p id="date">Published December 22, 2020</p>
-                    <p>Are you ready for shadow work?</p>
-                    <p>All needed information and also signs if you're not ready for shadow work!</p>
-                    <p>Disclaimer! This is not instead of therapy!</p>
-                    </a>
-                </article>
-
-                <article>
-                    <a href="https://www.biddytarot.com/12-tarot-tips-for-the-tarot-beginner/">
-                    <h2>Thinking of getting your first Tarot deck?</h2>
-                    <p>A beginners guide how to pick your first tarot deck.</p>
-                    <p>How to use it, making it your own deck and how to protect it.</p>
-                    </a>
-                </article>
-
-                <article>
-                    <a href="https://spiralbookcase.com/blogs/blog/five-books-for-the-beginner-witch">
-                    <h2>Interested in learning more about witches and your inner power?</h2>
-                    <p id="date">Published May 22, 2020</p>
-                    <p>These books are perfect for you to start your journey in discovering the past and bringing your inner power to life!</p>
-                    <p>Both good for beginner witches as experienced ones to read.</p>
-                    </a>
-                </article>
-
-                <article>
-                    <a href="https://tabletalkmagazine.com/posts/what-is-a-deity-2020-08/">
-                    <h2>Deities? Gods? Goddesses?</h2>
-                    <p id="date">Published 26 Aug, 2020</p>
-                    <p>Having trouble deciding if you want to work with a deity?</p>
-                    <p>Or if you don't want to work with one but respect them or show them your interest?</p>
-                    <p>Tips to make it easier for you to choose what to do and which deity if you're having trouble deciding.</p>
-                    </a>
-                </article>
-
-                <article>
-                    <a href="https://medium.com/@rachel.rogers/what-is-the-difference-between-a-grimoire-and-a-book-of-shadows-a563d1562973">
-                    <h2>What's the difference between grimoire and book of shadows?</h2>
-                    <p id="date">Published Nov 8, 2018</p>
-                    <p>Simple guide how to start your own grimoire or book of shadows!</p>
-                    <p>If you don't want to make your own you can purchase finished books.</p>
-                    <p>Online shops and places to get your finished books.</p>
-                    </a>
-                </article>
-
-                <article>
-                    <a href="https://www.nylon.com/articles/ask-a-witch-july-2018">
-                    <h2>The important reason why to have routines</h2>
-                    <p id="date">Published July 2018</p>
-                    <p>Examples of routines and reasons why you should do it too!</p>
-                    <p>It can change your entire day or help you feel relaxed after a stressful day.</p>
-                    </a>
-                </article>
-
-                <article>
-                    <a href="https://purechakra.com/blogs/a-hippie-spirituality-blog/a-complete-guide-to-buying-burning-incense">
-                    <h2>10 tips how to use incense</h2>
-                    <p id="date">Published March 23, 2020</p>
-                    <p>Incense sticks, incense cones and smudge sticks!</p>
-                    <p>The different sentence's properties and uses from protecting to banishing.</p>
-                    </a>
-                </article>
+                ?>
             </div>
 
             <div class="side">
@@ -336,14 +275,4 @@
         </div>
 
     </body>
-
-    <footer>
-        <nav class="footer-nav">
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </nav>
-    </footer>
-
 </html>

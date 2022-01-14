@@ -11,6 +11,17 @@ body
     padding: 0;
 }
 
+.cont
+{
+    background-color: darkseagreen;
+}
+
+.cont h1
+{
+    text-align: center;
+    margin: auto;
+}
+
 /*Header css*/
 .symbol
 {
@@ -141,7 +152,7 @@ p
     padding: 1rem;
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr;
     height: 100%;
     width: 100%;
 }
@@ -235,7 +246,7 @@ p
 @media (min-width: 1024px){
     .info{
         grid-template-columns: 1fr 2fr 1fr;
-        grid-template-rows: 1fr 1fr;
+        grid-template-rows: 1fr;
         padding: 0;
     }
     .tarot, .tarot2{
@@ -270,7 +281,6 @@ p
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: repeat(4, 1fr);
-    background-color: darkseagreen;
     padding: 0.5rem 0;
     width: 100%;
     height: 100%;
@@ -390,7 +400,6 @@ p
 /*About css*/
 .pic-about
 {
-    background-color: darkseagreen;
     padding: 1rem;
     display: grid;
     grid-template-columns: 1fr 3fr 1fr;
@@ -534,7 +543,6 @@ p
 /*Contact css*/
   .contact
 {
-    background-color: darkseagreen;
     font-size: 1.5rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -574,6 +582,12 @@ p
 {
     text-decoration: none;
     color: darkslategray;
+}
+
+#form label
+{
+    margin: auto;
+    padding-right: 5px;
 }
 
 @media (min-width: 350px){
