@@ -29,7 +29,7 @@ include '../Incl/header.php';
 
                     <div id="form">
                         <h2>Contact me here!</h2>
-                        <form action="" method="post">
+                        <form data-netlify="true" action="" method="post">
                             <p><label>Name: </label>
                             <input type="text" name="name" required></p>
 
