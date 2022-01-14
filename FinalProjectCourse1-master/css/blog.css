@@ -1,0 +1,534 @@
+html
+{
+    margin: 0;
+    padding: 0;
+    background-color: antiquewhite;
+}
+
+body
+{
+    margin: 0;
+    padding: 0;
+}
+
+.symbol
+{
+   margin: 0.5rem;
+   width: 7rem;
+   height: 7rem;
+}
+
+#header h1
+{
+    margin: auto;
+    text-align: center;
+}
+
+#header
+{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height: 7rem;
+}
+
+.nav li a
+{
+    text-decoration: none;
+    color: darkslategrey;
+    text-align: center;
+}
+
+.nav li a:hover
+{
+    color: rgb(17, 15, 15);
+}
+
+.nav li
+{
+    padding-left: 1rem;
+}
+
+.nav
+{
+    list-style: none;
+    padding-top: 0;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: row;
+}
+/* Senare med php
+#form-flex
+{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 1rem;
+    margin-top: -1rem;
+}*/
+@media (min-width: 350px)
+{
+    #header
+    {
+        font-size: 0.6rem;
+        grid-template-columns: 1fr 2fr 1fr;
+        height: 4rem;
+    }
+
+    .nav
+    {
+        font-size: 1rem;
+        margin: 0;
+    }
+
+    .symbol
+    {
+        height: 80%;
+        width: 70%;
+        margin: 10% 0 10% 10%;
+    }
+
+    .nav li
+    {
+        padding: 0 0.2rem;
+    }
+}
+
+@media (min-width: 400px)
+{
+    #header
+    {
+        font-size: 0.6rem;
+    }
+
+    .symbol
+    {
+        height: 70%;
+        width: 70%;
+    }
+}
+
+@media (min-width: 640px)
+{
+    #header
+    {
+        font-size: 1rem;
+        height: 7rem;
+    }
+
+    .nav
+    {
+        font-size: 1.2rem;
+        margin: 0;
+    }
+
+    .symbol
+    {
+        height: 80%;
+        width: 55%;
+        margin: 2%;
+    }
+}
+
+@media (min-width: 1024px)
+{
+    #header
+    {
+        font-size: 1rem;
+        height: 8.5rem;
+    }
+
+    .nav
+    {
+        font-size: 1.5rem;
+        margin: 0;
+    }
+
+    .nav li
+    {
+        padding: 0 0.5rem;
+    }
+
+    .symbol
+    {
+        height: 7rem;
+        width: 7rem;
+    }
+}
+
+/*Blog css*/
+.main
+{
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-areas:
+    "side main";
+    background-color: darkseagreen;
+    position: relative;
+    width: 100%;
+}
+
+.blog
+{
+    grid-area: main;
+    width: 60ch;
+    padding-left: 5rem;
+}
+
+.blog h1
+{
+    padding: 0;
+    margin: 1rem 0 0 0;
+    color: rgb(17, 15, 15);
+}
+
+.blog h2
+{
+    padding: 1rem 0 0 0;
+    margin: 0;
+    color: rgb(17, 15, 15);
+}
+
+.blog p
+{
+    padding: 0.5rem 0;
+    margin: 0;
+    font-size: 1.3rem;
+    color: rgb(17, 15, 15);
+}
+
+.blog a
+{
+    padding: 0;
+    margin: 0;
+}
+
+#blog-sep
+{
+    background-color: darkred;
+    height: 0.1rem;
+}
+
+article
+{
+    padding: 1rem;
+    background-color: gainsboro;
+    border-radius: 1rem;
+    border: 0.1rem solid rgb(17, 15, 15);
+    margin: 1rem 0;
+}
+
+article a
+{
+    text-decoration: none;
+    color: rgb(17, 15, 15);
+}
+
+#date
+{
+    font-size: 1rem;
+}
+
+@media (min-width: 350px)
+{
+    .main h1, .main h2
+    {
+        font-size: 1.2rem;
+    }
+
+    .blog
+    {
+        width: 28ch;
+        padding-left: 8%;
+    }
+
+    .blog h2, .blog p
+    {
+        font-size: 1rem;
+        padding: 0 0 0.2rem 0;
+    }
+
+    #date
+    {
+        font-size: 0.7rem;
+    }
+}
+
+@media (min-width: 400px)
+{
+    .blog
+    {
+        padding-left: 8%;
+    }
+}
+
+@media (min-width: 640px)
+{
+    .main h1, .main h2
+    {
+        font-size: 1.5rem;
+    }
+
+    .blog
+    {
+        width: 50ch;
+    }
+
+    .blog h2, .blog p
+    {
+        font-size: 1.2rem;
+    }
+
+    #date
+    {
+        font-size: 0.9rem;
+    }
+
+}
+
+@media (min-width: 1024px)
+{
+    .blog
+    {
+        width: 65ch;
+    }
+}
+
+@media (min-width: 2000px)
+{
+
+    .main
+    {
+        grid-template-columns: 10% 90%;
+    }
+
+    .blog
+    {
+        width: 75ch;
+    }
+}
+
+/*Side category css*/
+.side
+{
+    grid-area: side;
+    font-size: 1.5rem;
+    position: relative;
+    width: 100%;
+}
+
+.side li
+{
+    margin: 1rem;
+    list-style: none;
+}
+
+.side-sep
+{
+    background-color: darkslategray;
+    height: 0.1rem;
+}
+
+.side-item a
+{
+    display: block;
+}
+
+.side-item a:hover + .sub-side, .sub-side:hover
+{
+    display: flex;
+}
+
+.sub-side
+{
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    background-color: bisque;
+    margin-left: 6rem;
+    margin-top: -3.4rem;
+    width: 11.1rem;
+    padding-right: 0.5rem;
+    font-size: 1rem;
+    z-index: 2;
+}
+
+.sub-side li
+{
+    margin: 0.6rem 0 0 0.6rem;
+    padding-bottom: 0.5rem;
+}
+
+.sub-side a
+{
+    text-decoration: none;
+    color: rgb(17, 15, 15);
+}
+
+.main-side
+{
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: lavender;
+    border: 0.2rem solid rgb(17, 15, 15);
+}
+
+.main-side h2
+{
+    margin: 0;
+}
+
+@media (min-width: 350px)
+{
+    .main-side
+    {
+        border: 0.1rem solid rgb(17, 15, 15);
+    }
+
+    .side
+    {
+        font-size: 0.7rem;
+    }
+
+    .side h2
+    {
+        font-size: 0.7rem;
+    }
+
+    .side li
+    {
+        margin: 0.5rem
+    }
+
+    .sub-side
+    {
+        margin-left: 4.1rem;
+        margin-top: -3.7rem;
+        width: 7rem;
+        padding: 0;
+        font-size: 0.8rem;
+    }
+
+    .sub-side li
+    {
+        padding: 0;
+        margin: 0.4rem;
+    }
+}
+
+@media (min-width: 400px)
+{
+    .side
+    {
+        font-size: 1rem;
+    }
+
+    .side h2
+    {
+        font-size: 0.9rem;
+    }
+
+    .sub-side
+    {
+        margin-left: 4.7rem;
+        margin-top: -3.9rem;
+    }
+}
+
+@media (min-width: 640px)
+{
+    .side
+    {
+        font-size: 1.2rem;
+    }
+
+    .side h2
+    {
+        font-size: 1.2rem;
+    }
+
+    .side li
+    {
+        margin: 0.5rem
+    }
+
+    .sub-side
+    {
+        margin-left: 9rem;
+        margin-top: -4.5rem;
+        width: 8rem;
+        font-size: 0.9rem;
+    }
+
+    .sub-side li
+    {
+        padding: 0.5rem;
+        margin: 0 0.5rem;
+    }
+}
+
+@media (min-width: 1024px)
+{
+    .sub-side
+    {
+        margin-left: 12.2rem;
+        font-size: 1rem;
+    }
+}
+
+/*Footer css*/
+.footer-nav
+{
+    list-style: none;
+    display: flex;
+    font-size: 1.5rem;
+    justify-content: flex-end;
+    align-content: flex-end;
+    background-color: antiquewhite;
+    flex-direction: row;
+    padding: 1rem;
+    position: static;
+    bottom: 0;
+}
+
+.footer-nav a
+{
+    text-decoration: none;
+    padding: 0.5rem;
+    color: darkslategray;
+}
+@media (min-width: 350px)
+{
+    .footer-nav
+    {
+        font-size: 0.8rem;
+    }
+}
+
+@media (min-width: 400px)
+{
+    .footer-nav
+    {
+        font-size: 1rem
+    }
+}
+
+@media (min-width: 640px)
+{
+    .footer-nav
+    {
+        font-size: 1.2rem;
+    }
+}
+
+@media (min-wdith: 1024px)
+{
+    .footer-nav
+    {
+        font-size: 1.5rem;
+    }
+}

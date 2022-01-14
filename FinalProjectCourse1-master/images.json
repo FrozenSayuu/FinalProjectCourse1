@@ -1,0 +1,59 @@
+[
+    {
+        "title": "The Green Witch Book",
+        "description": "The green witch book surrounded by candles",
+        "id": "pc-img",
+        "class":"galimg",
+        "url": "../img/img0.jpg",
+        "alt": "The green witch book surrounded by candles"
+    },
+    {
+        "title": "Witchy aesthetic desk",
+        "description": "Close-up of lavender, a black candle and the moon tarot card",
+        "class":"galimg",
+        "url": "../img/img1.jpg",
+        "alt": "Close-up of lavender, a black candle and the moon tarot card"
+    }, 
+    {
+        "title": "Antique book of herbalism",
+        "description": "Antique dictionary book of herbalism",
+        "class":"galimg",
+        "url": "../img/img2.jpg",
+        "alt": "Antique dictionary book of herbalism"
+    },
+    {
+        "title": "Witchy gadgets",
+        "description": "Desktop with witchy aesthetic",
+        "class":"galimg",
+        "url": "../img/img3.jpg",
+        "alt": "Desktop with witchy aesthetic"
+    },
+    {
+        "title": "Lunar cycle",
+        "description": "The different phases of the moon",
+        "class":"galimg",
+        "url": "../img/img4.jpg",
+        "alt": "The different phases of the moon"
+    },
+    {
+        "title": "Tarot card session",
+        "description": "Tarot card session pull",
+        "class":"galimg",
+        "url": "../img/img5.jpg",
+        "alt": "Tarot card session"
+    },
+    {
+        "title": "Face-less",
+        "description": "Landscape photo with a woman in black holding a skull over her head",
+        "class":"galimg",
+        "url": "../img/img6.jpg",
+        "alt": "Landscape photo with a woman in black holding a skull over her head"
+    },
+    {
+        "title": "Workstation",
+        "description": "Typical workingstation for a witch with pumpkins, herbs, candles and bottles",
+        "class":"galimg",
+        "url": "../img/img7.jpg",
+        "alt": "Workingstation for a witch with pumpkins, herbs, candles and bottles"
+    }
+]
