@@ -175,3 +175,10 @@ function closeDialog()
     dialog.classList.remove('opened');
     previousActiveElement.focus();
 }
+
+/*let product = [{
+    name: "banan",
+}, ];
+localStorage.setItem("key", JSON.stringify(product));
+
+let otherproduct = JSON.parse(localStorage.getItem("product"));*/
