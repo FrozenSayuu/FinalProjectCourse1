@@ -59,15 +59,7 @@ body
     align-items: center;
     flex-direction: row;
 }
-/* Senare med php
-#form-flex
-{
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding-right: 1rem;
-    margin-top: -1rem;
-}*/
+
 @media (min-width: 350px)
 {
     #header
@@ -480,6 +472,17 @@ article a
     }
 }
 
+/*Login*/
+#login-form
+{
+    padding-left: 2rem;
+}
+
+#login-pic
+{
+    padding-top: 5rem;
+}
+
 /*Footer css*/
 .footer-nav
 {
@@ -531,4 +534,36 @@ article a
     {
         font-size: 1.5rem;
     }
+}
+
+table
+{
+    border-spacing: 5px;
+}
+
+#b
+{
+    border: 1px solid black;
+}
+
+#h1-admin, #h2-admin, #add-post
+{
+    padding-left: 2rem;
+}
+
+#h2-admin
+{
+    padding-top: 1rem;
+}
+
+#knapp
+{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 1rem;
+}
+
+#admin-cont
+{
+    background-color: darkseagreen;
 }
