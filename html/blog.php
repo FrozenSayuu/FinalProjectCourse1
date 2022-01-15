@@ -1,9 +1,6 @@
 <?php
 session_start();
 
-error_reporting(-1);              // Report all type of errors
-ini_set("display_errors", 1);
-
 $db = new PDO("sqlite:thehiddencorner.db");
 $stmt = $db -> prepare("SELECT * FROM login");        //Tabellen för login uppgifterna
 $stmt -> execute();

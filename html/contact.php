@@ -10,10 +10,14 @@ if(!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['message']
     $name = htmlspecialchars($_POST['name']);
     $mail = htmlspecialchars($_POST['email']);
     $message = htmlspecialchars($_POST['message']);
-
+    
     $msg = "Thanks for your email! \n We'll reply shortly! \n Blessed be~";
-    mail($mail, "no-reply", $msg);
-
+    $msg = wordwrap($msg,70);
+    $mailto = "admin@serqosa.se";
+    $headers = "From: ".$mailto."\r\n".
+        "Reply-To: ".$mail."\r\n";
+    mail($mailto, 'no-reply', $msg, $headers);
+    
     $stmt = $db -> prepare("INSERT INTO contact ('mail', 'name', 'message') VALUES ('{$mail}','{$name}', '{$message}')");
     $stmt -> execute();
 }
@@ -22,7 +26,6 @@ include '../Incl/header.php';
 ?>
         <div class="cont">
             <h1>Contacts</h1>
-            
             <div class="contact">
                 <img id="border" src="../img/border.png" width="1782" height="2694" alt="gothic border">
                     <div id="contact">

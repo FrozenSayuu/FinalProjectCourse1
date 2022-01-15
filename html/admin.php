@@ -1,8 +1,5 @@
 <?php
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 
 $db = new PDO("sqlite:thehiddencorner.db");
 $sql = "pragma foreign_keys = on;";        //Tabellen där bloggen ska visas från
@@ -20,29 +17,31 @@ if(!empty($_POST['blog']) && !empty($_POST['title'])) //Lägga till en ny blogg 
     $blog = htmlspecialchars($_POST['blog']);
     $title = htmlspecialchars($_POST['title']);
 
-    $stmtBlog = $db -> prepare("INSERT INTO blog_posts ('title', 'blog') VALUES ('{$title}','{$blog}')");
-    $stmtBlog -> execute();
-}
-
-if(!empty($_POST['blog']) && !empty($_POST['title']) && !empty($_POST['date'])) //Lägga till en ny blogg i db
-{
-    $blog = htmlspecialchars($_POST['blog']);
-    $title = htmlspecialchars($_POST['title']);
-    $date = htmlspecialchars($_POST['date']);
-
-    $stmtBlog = $db -> prepare("INSERT INTO blog_posts ('title', 'blog', 'dates') VALUES ('{$title}','{$blog}', '{$date}')");
-    $stmtBlog -> execute();
-}
-
-if(!empty($_POST['blog']) && !empty($_POST['link']) && !empty($_POST['title']) && !empty($_POST['date'])) //Lägga till en ny blogg och länk i db
-{
-    $blog = htmlspecialchars($_POST['blog']);
-    $title = htmlspecialchars($_POST['title']);
-    $link = htmlspecialchars($_POST['link']);
-    $date = htmlspecialchars($_POST['date']);
-
-    $stmtBlog = $db -> prepare("INSERT INTO blog_posts ('title','blog', 'link', 'dates') VALUES ('{$title}','{$blog}', '{$link}' , '{$date}')");
-    $stmtBlog -> execute();
+    if(!empty($_POST['blog']) && !empty($_POST['title']) && !empty($_POST['date'])) //Lägga till en ny blogg i db
+    {
+        $blog = htmlspecialchars($_POST['blog']);
+        $title = htmlspecialchars($_POST['title']);
+        $date = htmlspecialchars($_POST['date']);
+    
+        $stmtBlog = $db -> prepare("INSERT INTO blog_posts ('title', 'blog', 'dates') VALUES ('{$title}','{$blog}', '{$date}')");
+        $stmtBlog -> execute();
+    }
+    else if(!empty($_POST['blog']) && !empty($_POST['link']) && !empty($_POST['title']) && !empty($_POST['date'])) //Lägga till en ny blogg och länk i db
+    {
+        $blog = htmlspecialchars($_POST['blog']);
+        $title = htmlspecialchars($_POST['title']);
+        $link = htmlspecialchars($_POST['link']);
+        $date = htmlspecialchars($_POST['date']);
+    
+        $stmtBlog = $db -> prepare("INSERT INTO blog_posts ('title','blog', 'link', 'dates') VALUES ('{$title}','{$blog}', '{$link}' , '{$date}')");
+        $stmtBlog -> execute();
+    }
+    else
+    {
+        $stmtBlog = $db -> prepare("INSERT INTO blog_posts ('title', 'blog') VALUES ('{$title}','{$blog}')");
+        $stmtBlog -> execute();
+    }
+    header("Location: admin.php");
 }
 
 if(!empty($_POST['delete'])) //Ta bort bloggen från db
@@ -82,9 +81,9 @@ if(!empty($_POST['visible'])) //Visa bloggen för inloggade
     $stmtDraft -> execute();
 }
 
-if(!empty($_POST['delete'])) //Ta bort bloggen från db
+if(!empty($_POST['deletevisible'])) //Ta bort bloggen från visibledb
 {
-    $delete = htmlspecialchars($_POST['delete']);
+    $delete = htmlspecialchars($_POST['deletevisible']);
 
     $stmtDelete = $db -> prepare("DELETE FROM visible WHERE id=('{$delete}')");
     $stmtDelete -> execute();
@@ -160,7 +159,7 @@ if(!empty($_POST['delete'])) //Ta bort bloggen från db
     {
         $edittitle = htmlspecialchars($_POST['edittitle']);
         $editpost = htmlspecialchars($_POST['editpost']);
-        $editdate;
+        $editdate = '';
         $id = htmlspecialchars($_POST['id']);
                 
         if(!empty($_POST['edittitle']) && !empty($_POST['editpost']) && !empty($_POST['id']) && !empty($_POST['editdate']))
@@ -244,7 +243,7 @@ if(!empty($_POST['delete'])) //Ta bort bloggen från db
 
                             <form action="admin.php" method="post">
                                 <td><input type="submit" value="X" id="delete"></td>
-                                <input type="hidden" name="delete" value="{$draft['id']}">
+                                <input type="hidden" name="deletevisible" value="{$draft['id']}">
                             </form>
                         </tr>
     TABLEROW;
